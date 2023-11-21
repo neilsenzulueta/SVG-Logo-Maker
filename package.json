@@ -1,0 +1,15 @@
+{
+  "name": "svg-logo-maker",
+  "version": "1.0.0",
+  "description": "Module 10 Challenge: Object-oriented- programming",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}
