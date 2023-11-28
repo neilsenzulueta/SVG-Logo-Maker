@@ -1,1 +1,1 @@
-<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"><g>Square<rect x="70" y="40" width="160" height="160" fill="red"/><text x="150" y="125" font-size="40" text-anchor="middle" fill="blue">mmm</text></g></svg>
+<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"><g>Circle<circle cx="150" cy="100" r="80" fill="blue"/><text x="150" y="125" font-size="40" text-anchor="middle" fill="black">NCZ</text></g></svg>
