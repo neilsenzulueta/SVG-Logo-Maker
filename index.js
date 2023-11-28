@@ -1,9 +1,40 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
+const { Triangle, Circle, Square } = require('./lib/shapes');
 
 
-const questions = () => {
-    return inquirer.prompt([
+function writeFile(fileName, responses) {
+    let svgString = "";
+    svgString = '<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">';
+    svgString += "<g>";
+    svgString += `${responses.Shape}`;
+
+    let shape;
+    if (responses.Shape === "Triangle") {
+        shape = new Triangle();
+        svgString += `<polygon points="150, 18 244, 182 56, 182" fill="${responses.ShapeColor}"/>`
+        
+    } else if (responses.Shape === "Circle") {
+        shape = new Circle()
+        svgString += `<circle cx="150" cy="100" r="80" fill="${responses.ShapeColor}"/>`
+        
+    } else if (responses.Shape === "Square") {
+        shape = new Square()
+        svgString += `<rect x="70" y="40" width="160" height="160" fill="${responses.ShapeColor}"/>`
+        
+    }
+
+    svgString += `<text x="150" y="125" font-size="40" text-anchor="middle" fill="${responses.TextColor}">${responses.Text}</text>`;
+    svgString += "</g>";
+    svgString += "</svg>";
+
+    fs.writeFile(fileName, svgString, (err) => {
+        err ? console.log(err) : console.log("You generated a logo.svg");
+    });
+
+}
+function questions() {
+    inquirer.prompt([
         {
             type: "input",
             message: "What text do you want for your logo to display? (Enter up to three characters)",
@@ -27,16 +58,17 @@ const questions = () => {
         }
 
     ])
-
-const writeTofile = responses => {
-    fs.writeFile()
+    .then((responses) => {
+        if (responses.Text.length > 3) {
+            console.log("Maximum of 3 characters only");
+            questions();
+        } else {
+            writeFile("logo.svg", responses);
+        }
+    });
 }
-}
 
-
-
-
-
+questions();
 
 
 /*User Story
